@@ -110,3 +110,15 @@ div.div1 form span.psw{
     letter-spacing: 0.1rem;
     text-decoration: none;
 }
+
+.flash-message2, .messg{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #bd0000;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* text-shadow: 0 0.5rem 1rem rgba(209, 184, 184, 0.2); */
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
