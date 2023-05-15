@@ -12,12 +12,13 @@ export const logout = () => {
       })
       .then((res) => {
         console.log(res);
-        localStorage.removeItem("accessToken");
-        setTimeout(() => {
-          window.location.reload();             
-        }, 1000);
       })
       .catch((err) => {
         console.log(err);
       })
+
+      localStorage.removeItem("accessToken");
+        setTimeout(() => {
+          window.location.reload();             
+        }, 1000);
 }
