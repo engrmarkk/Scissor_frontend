@@ -1,0 +1,88 @@
+.shot h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.shot{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    max-width: 320px;
+}
+
+.shot form {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.shot form input[type="text"] {
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.shot form input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.shot form button {
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.details p{
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.details a{
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.imgg{
+    object-fit: cover;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.b2d{
+    background-color: #007bff;
+    color: #fff;
+    font-size: smaller;
+    padding: 2px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.b2d-div{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+}
