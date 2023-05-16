@@ -9,6 +9,8 @@ import Login from "./login";
 import Write from "./write";
 import Register from "./register";
 import UsersTable from "./users";
+import Dashboard from "./dashboard";
+import ShortenUrl from "./shorten";
 import { useEffect, useState } from "react";
 
 
@@ -37,6 +39,8 @@ function App() {
           <Route path="/" element={<Write/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/users" element={<UsersTable/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/shorten-url" element={<ShortenUrl/>} />
         </Routes>
       </div>
   );
