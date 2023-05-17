@@ -64,3 +64,28 @@ h1.scissor {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar ul li {
+    text-align: center;
+  }
+  .navbar ul li a {
+    padding: 10px;
+  }
+  .navbar .logo {
+    margin: auto;
+  }
+  .navbar .logo h2 {
+    text-align: center;
+  }
+  .navbar .logo img {
+    width: 40%;
+  }
+}
