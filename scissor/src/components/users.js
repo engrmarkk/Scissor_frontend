@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/user.css'
-// import BASE_URL from './utils/constants';
-
-const BASE_URL = 'http://localhost:5000';
+import { BASE_URL } from '../utils/constants';
 
 function UsersTable() {
   const [users, setUsers] = useState([]);
