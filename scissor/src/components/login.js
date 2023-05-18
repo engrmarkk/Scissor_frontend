@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/login.css";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 function Login() {
     const navigate = useNavigate();
@@ -23,10 +24,10 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent default form submission
     try {
-      const response = await axios.post("http://localhost:5000/login", user);
-      const data = response.data;
+      const response = await axios.post(`${BASE_URL}/login`, user);
+      const data = response.data; // get data from response
       console.log(data);
       if (message) {
         setFlashMessage(message); // set flash message from location state if redirected from register component
@@ -42,7 +43,7 @@ function Login() {
           // Store access token in local storage
           localStorage.setItem("accessToken", data.access_token);
           setTimeout(() => {
-                window.location.reload();             
+                window.location.reload();          
             }, 1000);
       }
 
