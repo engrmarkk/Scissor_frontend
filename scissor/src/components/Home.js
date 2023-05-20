@@ -4,12 +4,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import Write from "./write";
 import { logout } from "./logout";
-
-
+import { useEffect, useState } from "react";
 
 
 
 const Home = ({isLoggedIn}) => {
+	const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      setLoggedIn(true);
+    }
+  }, []);
+
 return (
 	<div>
         <header className="App-header">
@@ -22,8 +30,16 @@ return (
 		<Link to="/">Home</Link>
 		</li>
 
-        {!isLoggedIn && 
-        <>
+        {loggedIn ? (
+		<>
+        <li>
+		{/* Endpoint to route to Register component */}
+		<Link to="#" onClick={() => {logout()}}>Logout</Link> 
+		</li>
+		</>
+        ) : ( 
+
+			<>
 		<li>
 		{/* Endpoint to route to Login component */}
 		<Link to="/login">Login</Link>
@@ -35,16 +51,15 @@ return (
         <li>
 		{/* Endpoint to route to Register component */}
 		<Link to="/register">Contact Us</Link>
-		</li> </>}
+		</li>
+					
         <li>
 		{/* Endpoint to route to Register component */}
 		<Link to="/users">Users</Link>
 		</li>
-        {isLoggedIn && 
-        <li>
-		{/* Endpoint to route to Register component */}
-		<Link to="#" onClick={() => {logout()}}>Logout</Link> 
-		</li> }
+		</>
+		 
+		)}
 	</ul>
         </nav>
         </header>
