@@ -3,45 +3,47 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import "../css/shorten.css";
+import api from "./refresh_t";
 
 export default function ShortenUrl() {
-  const [responseData, setData] = useState([]);
-  const [urlLink, setUrlLink] = useState({ url: "" });
-  const [message, setMessage] = useState("");
-  const [flashMessage, setFlashMessage] = useState("");
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setUrlLink((prevUrlLink) => ({
-      ...prevUrlLink,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("accessToken");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    const [responseData, setResponseData] = useState({});
+    const [urlLink, setUrlLink] = useState({ url: "" });
+    const [message, setMessage] = useState("");
+    const [flashMessage, setFlashMessage] = useState("");
+  
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setUrlLink((prevUrlLink) => ({
+        ...prevUrlLink,
+        [name]: value,
+      }));
     };
-
-    try {
-      const response = await axios.post(`${BASE_URL}/short-urls`, urlLink, config);
-      const responseData = response.data;
-      setData(responseData);
-      console.log(responseData);
-    } catch (error) {
-      console.error(error);
-    }
-
-    if (message) {
-      setFlashMessage(message);
-    }
-
-    setUrlLink({ url: "" });
-  };
+  
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+      
+        const accessToken = localStorage.getItem("accessToken");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+      
+        try {
+          const response = await api.post(`${BASE_URL}/short-urls`, urlLink, config);
+          const responseData = response.data;
+          setResponseData(responseData);
+          console.log(responseData);
+        } catch (error) {
+        console.error(error);
+      }
+  
+      if (message) {
+        setFlashMessage(message);
+      }
+  
+      setUrlLink({ url: "" });
+    };
 
   return (
     <div className="shot">
@@ -58,11 +60,18 @@ export default function ShortenUrl() {
         />
         <button type="submit">Shorten</button>
       </form>
-      {responseData.length > 0 && (
+      {Object.keys(responseData).length > 0 && (
         <>
           <div className="details">
-            <p>Short URL: {responseData.short_url}</p>
-            <p>Original URL: {responseData.url}</p>
+            <p>Short URL: <span>
+                <a href={responseData.short_url} target="_blank" rel="noreferrer">{responseData.short_url}
+                </a></span></p>
+
+            <p>Original URL: 
+                <span>
+                    <a href={responseData.url} target="_blank" rel="noreferrer">{responseData.url}</a>
+                </span>
+                </p>
           </div>
         </>
       )}
