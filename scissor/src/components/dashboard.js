@@ -5,6 +5,7 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import QRCode from 'qrcode.react';
+import api from "./refresh_t";
 
 function Dashboard() {
   const [users, setUsers] = useState([]);
@@ -20,8 +21,7 @@ function Dashboard() {
       },
     };
 
-    axios
-      .get(`${BASE_URL}/dashboard`, config) // Fetch data from the first link
+    api.get(`${BASE_URL}/dashboard`, config) // Fetch data from the first link
       .then((response) => {
         // Process the data
         const users = response.data;
@@ -74,14 +74,18 @@ function Dashboard() {
       <div className="url-list">
         <h2>URL List</h2>
         <ul>
-          {user_links.map((item) => (
+          {user_links.slice().reverse().map((item) => (
             <li key={item.id}>
               <div>
                 <p>
-                  Original URL: <a href={item.url}>{item.url}</a>
+                  Original URL: <a href={item.url}
+                  target="_blank"
+                  >{item.url}</a>
                 </p>
                 <p>
-                  Short URL: <a href={item.short_url}>{item.short_url}</a>
+                  Short URL: <a href={item.short_url}
+                  target="_blank"
+                  >{item.short_url}</a>
                 </p>
                 <p>
                   <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${item.short_url}`} alt="QR Code" />
