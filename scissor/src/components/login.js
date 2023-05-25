@@ -42,6 +42,7 @@ function Login() {
     
           // Store access token in local storage
           localStorage.setItem("accessToken", data.access_token);
+          localStorage.setItem("refreshToken", data.refresh_token);
           setTimeout(() => {
                 window.location.reload();          
             }, 1000);
