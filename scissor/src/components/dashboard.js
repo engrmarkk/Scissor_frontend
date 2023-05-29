@@ -48,19 +48,19 @@ function Dashboard() {
 
       <div className="user-profile">
         <h2>User Profile</h2>
-        <p>
+        <p className="title-head">
           Username: <span>{users.username}</span>
         </p>
-        <p>
+        <p className="title-head">
           Email:{" "}
           <span>
             <a href={`mailto:${users.email}`}>{users.email}</a>
           </span>
         </p>
-        <p>
+        <p className="title-head">
           First Name: <span>{users.first_name}</span>
         </p>
-        <p>
+        <p className="title-head">
           Last Name: <span>{users.last_name}</span>
         </p>
       </div>
@@ -73,9 +73,9 @@ function Dashboard() {
 
       <div className="url-list">
         <h2>URL List</h2>
-        <ul>
+        <ul className="ul-list">
           {user_links.slice().reverse().map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="li-list">
               <div>
                 <p>
                   Original URL: <a href={item.url}
