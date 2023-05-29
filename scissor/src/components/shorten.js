@@ -63,11 +63,11 @@ export default function ShortenUrl() {
       {Object.keys(responseData).length > 0 && (
         <>
           <div className="details">
-            <p>Short URL: <span>
+            <p>Short URL: <br /> <span>
                 <a href={responseData.short_url} target="_blank" rel="noreferrer">{responseData.short_url}
                 </a></span></p>
 
-            <p>Original URL: 
+            <p>Original URL: <br />
                 <span>
                     <a href={responseData.url} target="_blank" rel="noreferrer">{responseData.url}</a>
                 </span>
