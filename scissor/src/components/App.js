@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import "../css/App.css";
 // importing components from react-router-dom package
 import {
-BrowserRouter as Router,
-Route, Routes
+Route, Routes 
 } from "react-router-dom";
 import Home from "./Home";
 import Login from "./login";
@@ -11,12 +11,13 @@ import Register from "./register";
 import UsersTable from "./users";
 import Dashboard from "./dashboard";
 import ShortenUrl from "./shorten";
-import { useEffect, useState } from "react";
+import { AuthGuard } from "../authGuard/AuthGuard";
 
 
 function App() {
   const Token = localStorage.getItem("accessToken");
   const [checkToken, setCheckToken] = useState(false);
+
   useEffect(() => {
 
       if(Token !== null){
@@ -29,6 +30,7 @@ function App() {
     
   }, [Token])
 
+ 
 
 
   return (
@@ -36,11 +38,11 @@ function App() {
         <Home isLoggedIn={checkToken}/>
         <Routes>
           <Route path="/login" element={<Login/>} />
-          <Route path="/" element={<Write/>} />
           <Route path="/register" element={<Register/>} />
-          <Route path="/users" element={<UsersTable/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
-          <Route path="/shorten-url" element={<ShortenUrl/>} />
+          <Route path="/" element={<Write/>} />
+          <Route path="/users" element={<AuthGuard><UsersTable/></AuthGuard>} />
+          <Route path="/dashboard" element={<AuthGuard><Dashboard/></AuthGuard>} />
+          <Route path="/shorten-url" element={<AuthGuard><ShortenUrl/></AuthGuard>} />
         </Routes>
       </div>
   );
