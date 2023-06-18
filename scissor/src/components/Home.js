@@ -40,15 +40,15 @@ const Home = ({isLoggedIn}) => {
 		{/* Endpoint to route to Register component */}
 		<Link to="/register">Register</Link>
 		</li>
-        <li>
+        {/* <li> */}
 		{/* Endpoint to route to Register component */}
-		<Link to="/register">Contact Us</Link>
-		</li>
+		{/* <Link to="/register">Contact Us</Link> */}
+		{/* </li> */}
 					
-        <li>
+        {/* <li> */}
 		{/* Endpoint to route to Register component */}
-		<Link to="/users">Users</Link>
-		</li>
+		{/* <Link to="/users">Users</Link> */}
+		{/* </li> */}
 		</>
 		 
 		)}
