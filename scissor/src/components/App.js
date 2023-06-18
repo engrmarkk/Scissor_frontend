@@ -22,10 +22,8 @@ function App() {
 
       if(Token !== null){
         setCheckToken(true) ;
-        console.log("Token is available")
       } else {
         setCheckToken(false) ;
-        console.log("Token is null")
       }
     
   }, [Token])
@@ -39,10 +37,10 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
-          <Route path="/" element={<Write/>} />
-          <Route path="/users" element={<AuthGuard><UsersTable/></AuthGuard>} />
-          <Route path="/dashboard" element={<AuthGuard><Dashboard/></AuthGuard>} />
-          <Route path="/shorten-url" element={<AuthGuard><ShortenUrl/></AuthGuard>} />
+          <Route path="/" element={<Write isLoggedIn={checkToken}/>} />
+          <Route path="/users" element={<AuthGuard isAuthenticated={checkToken}><UsersTable/></AuthGuard>} />
+          <Route path="/dashboard" element={<AuthGuard isAuthenticated={checkToken}><Dashboard/></AuthGuard>} />
+          <Route path="/shorten-url" element={<AuthGuard isAuthenticated={checkToken}><ShortenUrl/></AuthGuard>} />
         </Routes>
       </div>
   );

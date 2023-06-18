@@ -9,16 +9,8 @@ import { useEffect, useState } from "react";
 
 
 const Home = ({isLoggedIn}) => {
-	const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      setLoggedIn(true);
-    }
-  }, []);
-
-return (
+	return (
 	<div>
         <header className="App-header">
         <nav className="navbar">
@@ -30,7 +22,7 @@ return (
 		<Link to="/">Home</Link>
 		</li>
 
-        {loggedIn ? (
+        {isLoggedIn ? (
 		<>
         <li>
 		{/* Endpoint to route to Register component */}

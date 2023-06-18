@@ -37,14 +37,16 @@ function Login() {
         password: ""
       });
       if (data) {
-          // handle successful login, e.g. redirect to dashboard
-          navigate("/dashboard", { state: { message: `Welcome` } });
-    
+   
           // Store access token in local storage
           localStorage.setItem("accessToken", data.access_token);
           localStorage.setItem("refreshToken", data.refresh_token);
+
+          // handle successful login, e.g. redirect to dashboard
+          navigate("/dashboard", { state: { message: `Welcome` } });
+          
           setTimeout(() => {
-                window.location.reload();          
+            window.location.reload();          
             }, 1000);
       }
 

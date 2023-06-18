@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/register.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 function Register() {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/register", user);
+      const response = await axios.post(`${BASE_URL}/register`, user);
       const data = response.data;
       console.log(data);
       setFlashMessage("Registration successful!"); // set flash message on success
