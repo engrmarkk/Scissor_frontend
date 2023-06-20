@@ -19,7 +19,7 @@ const Home = ({isLoggedIn}) => {
 	<div className="divflex">
         <header className="App-header">
         <nav className="navbar">
-	<h1 className="scissor">Scissor</h1>
+	<h1 className="scissor">Cut Live</h1>
 	<div class="hamburger" onClick={handleHamburgerClick}>
 		<div class="line1"></div>
 		<div class="line2"></div>
