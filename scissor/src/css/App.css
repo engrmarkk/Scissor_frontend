@@ -65,16 +65,71 @@ h1.scissor {
   }
 }
 
+
+
+
+
+
+
+
+.line1, .line2, .line3 {
+  position: relative;
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 2;
+  transition: .3s;
+  margin-right: 25px;
+}
+
+.line2{
+  margin: 5px 0;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+
+
 @media (max-width: 768px) {
+
+  .hamburger
+  {
+    display: block;
+    cursor: pointer;
+  }
+
+
+  h1.scissor {
+    padding-left: 2rem;
+  }
+
+/* 
   .navbar {
     flex-direction: column;
-  }
+  } */
   .navbar ul {
     flex-direction: column;
     width: 100%;
+    position: absolute;
+    top: -450px;
+    /* margin-top: 13rem; */
+    background: #282c34;
+    transition: .10s;
   }
+
+  .navbar ul.active {
+    top: 45px;
+    transition: .5s;
+  }
+
   .navbar ul li {
     text-align: center;
+    padding: 1rem;
   }
   .navbar ul li a {
     padding: 10px;
