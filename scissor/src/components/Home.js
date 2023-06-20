@@ -10,11 +10,21 @@ import { useEffect, useState } from "react";
 
 const Home = ({isLoggedIn}) => {
 
+
+	const handleHamburgerClick = () => {
+		document.querySelector("ul").classList.toggle("active")
+	}
+
 	return (
-	<div>
+	<div className="divflex">
         <header className="App-header">
         <nav className="navbar">
 	<h1 className="scissor">Scissor</h1>
+	<div class="hamburger" onClick={handleHamburgerClick}>
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
 	<br />
 	<ul>
 		<li>
