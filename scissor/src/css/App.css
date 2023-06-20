@@ -101,11 +101,13 @@ h1.scissor {
   {
     display: block;
     cursor: pointer;
+    z-index: 999;
   }
 
 
   h1.scissor {
     padding-left: 2rem;
+    z-index: 999;
   }
 
 /* 
@@ -119,12 +121,12 @@ h1.scissor {
     top: -450px;
     /* margin-top: 13rem; */
     background: #282c34;
-    transition: .10s;
+    transition: .7s;
   }
 
   .navbar ul.active {
     top: 45px;
-    transition: .5s;
+    transition: .7s;
   }
 
   .navbar ul li {
