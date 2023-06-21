@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://www.cutz.live';
+export const BASE_URL = 'https://cutz.live';
