@@ -52,7 +52,20 @@ function Login() {
 
     } catch (error) {
       console.error(error);
-      setFlashMessage(error.response.data.message); // set flash message from error response
+      // I ADDED THIS, FROM HERE
+      if (error.response) {
+        if (error.response.status === 404) {
+          setFlashMessage("User not found");
+        } else if (error.response.status === 401) {
+          setFlashMessage("Invalid password");
+        } else {
+          setFlashMessage("An error occurred.");
+        }
+      } else {
+        setFlashMessage("An error occurred.");
+      }
+      // TO HERE
+      // setFlashMessage(error.response.data.message); // set flash message from error response
     }
   };
 
