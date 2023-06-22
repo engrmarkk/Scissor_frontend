@@ -59,7 +59,7 @@ function Login() {
         } else if (error.response.status === 401) {
           setFlashMessage("Invalid password");
         } else {
-          setFlashMessage("An error occurred.");
+          setFlashMessage("An error: check your credentials.");
         }
       } else {
         setFlashMessage("An error occurred.");
