@@ -51,7 +51,8 @@ function Login() {
       }
 
     } catch (error) {
-      console.error(error);
+      // console.error(error);
+      console.error("An error occurred:", error);
       // I ADDED THIS, FROM HERE
       if (error.response) {
         if (error.response.status === 404) {
