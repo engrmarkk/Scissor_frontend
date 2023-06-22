@@ -36,6 +36,7 @@ export default function ShortenUrl() {
           console.log(responseData);
         } catch (error) {
         console.error(error);
+        setFlashMessage("Invalid link/Link already shortened");
       }
   
       if (message) {
