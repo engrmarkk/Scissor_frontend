@@ -10,7 +10,7 @@ function Login() {
     email: "",
     password: ""
   });
-  const [flashMessage, setFlashMessage] = useState(""); // add flashMessage state variable
+  const [flashMessage, setFlashMessage] = useState("default error"); // add flashMessage state variable
 
   const location = useLocation();
   const message = location.state && location.state.message;
@@ -54,17 +54,14 @@ function Login() {
       // console.error(error);
       console.error("An error occurred:", error);
       // I ADDED THIS, FROM HERE
-      if (error.response) {
-        if (error.response.status === 404) {
-          setFlashMessage("User not found");
-        } else if (error.response.status === 401) {
-          setFlashMessage("Invalid password");
-        } else {
-          setFlashMessage("An error: check your credentials.");
-        }
-      } else {
-        setFlashMessage("An error: check your credentials.");
-      }
+      
+        // if (error.response.status === 404) {
+        //   setFlashMessage("User not found");
+        // } else if (error.response.status === 401) {
+        //   setFlashMessage("Invalid password");
+        // } else{
+        //   setFlashMessage("An error: check your credentials.");
+        // }
       // TO HERE
       // setFlashMessage(error.response.data.message); // set flash message from error response
     }
@@ -84,6 +81,7 @@ function Login() {
           placeholder="Your email.."
           value={user.email}
           onChange={handleChange}
+          required
         />{" "}
         <br />
         <label htmlFor="password">Password</label> <br />
@@ -94,6 +92,7 @@ function Login() {
           placeholder="Your password.."
           value={user.password}
           onChange={handleChange}
+          required
         />{" "}
         <br />
         <input type="submit" value="Submit" />

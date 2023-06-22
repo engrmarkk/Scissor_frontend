@@ -56,6 +56,7 @@ function Register() {
           placeholder="Your first name.."
           value={user.first_name}
           onChange={handleChange}
+          required
         />
         <br />
         <label htmlFor="last_name">Last Name</label>
@@ -67,6 +68,7 @@ function Register() {
           placeholder="Your last name.."
           value={user.last_name}
           onChange={handleChange}
+          required
         />
         <br />
         <label htmlFor="username">Username</label>
@@ -78,6 +80,7 @@ function Register() {
           placeholder="Your username.."
           value={user.username}
           onChange={handleChange}
+          required
         />
         <br />
         <label htmlFor="email">Email</label>
@@ -89,6 +92,7 @@ function Register() {
           placeholder="Your email.."
           value={user.email}
           onChange={handleChange}
+          required
         />
         <br />
         <label htmlFor="password">Password</label>
@@ -100,6 +104,7 @@ function Register() {
           placeholder="Your password.."
           value={user.password}
           onChange={handleChange}
+          required
         />
         <br />
         <label htmlFor="confirm_password">Confirm Password</label>
@@ -111,6 +116,7 @@ function Register() {
           placeholder="Confirm password.."
           value={user.confirm_password}
           onChange={handleChange}
+          required
         />
         <br />
         <input type="submit" value="Submit" />

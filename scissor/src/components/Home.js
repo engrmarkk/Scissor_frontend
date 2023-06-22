@@ -20,10 +20,10 @@ const Home = ({isLoggedIn}) => {
         <header className="App-header">
         <nav className="navbar">
 	<h1 className="scissor">Cut Live</h1>
-	<div class="hamburger" onClick={handleHamburgerClick}>
-		<div class="line1"></div>
-		<div class="line2"></div>
-		<div class="line3"></div>
+	<div className="hamburger" onClick={handleHamburgerClick}>
+		<div className="line1"></div>
+		<div className="line2"></div>
+		<div className="line3"></div>
 	</div>
 	<br />
 	<ul>
