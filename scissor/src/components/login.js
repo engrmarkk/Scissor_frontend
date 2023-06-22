@@ -10,7 +10,7 @@ function Login() {
     email: "",
     password: ""
   });
-  const [flashMessage, setFlashMessage] = useState("default error"); // add flashMessage state variable
+  const [flashMessage, setFlashMessage] = useState(""); // add flashMessage state variable
 
   const location = useLocation();
   const message = location.state && location.state.message;
@@ -52,18 +52,12 @@ function Login() {
 
     } catch (error) {
       // console.error(error);
-      console.error("An error occurred:", error);
-      // I ADDED THIS, FROM HERE
-      
-        // if (error.response.status === 404) {
-        //   setFlashMessage("User not found");
-        // } else if (error.response.status === 401) {
-        //   setFlashMessage("Invalid password");
-        // } else{
-        //   setFlashMessage("An error: check your credentials.");
-        // }
-      // TO HERE
-      // setFlashMessage(error.response.data.message); // set flash message from error response
+      console.error("An terrible error occurred:", error);
+      if (error?.code === 'ERR_NETWORK') {
+        setFlashMessage('Account Not Found')
+      } else {
+        setFlashMessage('Please Register with full details')       
+      }     
     }
   };
 

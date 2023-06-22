@@ -33,11 +33,16 @@ function Register() {
       const data = response.data;
       console.log(data);
       setFlashMessage("Registration successful!"); // set flash message on success
+      
+      // navigate to login page after successful registration
       navigate('/login', { state: { message: "Registration successful!" } });
- // navigate to login page after successful registration
     } catch (error) {
-      console.error(error);
-      setFlashMessage(error.response.data.message); // set flash message on error
+      // set flash message on error
+      if (error?.code === 'ERR_NETWORK') {
+        setFlashMessage('Email already taken')
+      } else {
+        setFlashMessage(error?.message)       
+      } 
     }
   };
 
