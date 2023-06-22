@@ -62,7 +62,7 @@ function Login() {
           setFlashMessage("An error: check your credentials.");
         }
       } else {
-        setFlashMessage("An error occurred.");
+        setFlashMessage("An error: check your credentials.");
       }
       // TO HERE
       // setFlashMessage(error.response.data.message); // set flash message from error response
