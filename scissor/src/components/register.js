@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 function Register() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     first_name: "",
@@ -30,20 +30,30 @@ function Register() {
     e.preventDefault();
     try {
       const response = await axios.post(`${BASE_URL}/register`, user, {
-        withCredentials: true});
+        withCredentials: true
+      });
       const data = response.data;
       console.log(data);
       setFlashMessage("Registration successful!"); // set flash message on success
-      
+
       // navigate to login page after successful registration
       navigate('/login', { state: { message: "Registration successful!" } });
     } catch (error) {
       // set flash message on error
-      if (error?.code === 'ERR_NETWORK') {
-        setFlashMessage('Email already taken')
+      // if (error?.code === 'ERR_NETWORK') {
+      //   setFlashMessage('Email already taken')
+      // } else {
+      //   setFlashMessage(error?.message)       
+      // }
+
+      if (error.response && error.response.data && error.response.data.error) {
+        setFlashMessage(error.response.data.error);
+      } else if (error.response && error.response.data && error.response.data.message) {
+        setFlashMessage(error.response.data.message);
       } else {
-        setFlashMessage(error?.message)       
-      } 
+        console.error("An error occurred:", error);
+        setFlashMessage("An error occurred. Please try again.");
+      }
     }
   };
 
