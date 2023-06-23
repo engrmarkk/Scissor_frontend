@@ -29,7 +29,8 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${BASE_URL}/register`, user);
+      const response = await axios.post(`${BASE_URL}/register`, user, {
+        withCredentials: true});
       const data = response.data;
       console.log(data);
       setFlashMessage("Registration successful!"); // set flash message on success
