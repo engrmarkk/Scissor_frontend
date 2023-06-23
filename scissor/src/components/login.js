@@ -26,7 +26,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent default form submission
     try {
-      const response = await axios.post(`${BASE_URL}/login`, user);
+      const response = await axios.post(`${BASE_URL}/login`, user, {
+        withCredentials: true
+      });      
       const data = response.data; // get data from response
       console.log(data);
       if (message) {
