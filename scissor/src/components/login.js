@@ -45,7 +45,7 @@ function Login() {
           localStorage.setItem("refreshToken", data.refresh_token);
 
           // handle successful login, e.g. redirect to dashboard
-          navigate("/dashboard", { state: { message: `Welcome` } });
+          navigate("/dashboard", { state: { message: `` } }); //Welcome
           
           setTimeout(() => {
             window.location.reload();          
@@ -54,11 +54,19 @@ function Login() {
 
     } catch (error) {
       // console.error(error);
-      console.error("An terrible error occurred:", error);
-      if (error?.code === 'ERR_NETWORK') {
-        setFlashMessage('Account Not Found')
+      // console.error("An terrible error occurred:", error);
+      // if (error?.code === 'ERR_NETWORK') {
+      //   setFlashMessage('Account Not Found')
+      // } else {
+      //   setFlashMessage('Please Register with full details')       
+      // }
+      if (error.response && error.response.data && error.response.data.error) {
+        setFlashMessage(error.response.data.error);
+      } else if (error.response && error.response.data && error.response.data.message) {
+        setFlashMessage(error.response.data.message);
       } else {
-        setFlashMessage('Please Register with full details')       
+        console.error("An error occurred:", error);
+        setFlashMessage("An error occurred. Please try again.");
       }     
     }
   };
