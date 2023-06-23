@@ -67,7 +67,7 @@ function Login() {
       } else {
         console.error("An error occurred:", error);
         setFlashMessage("An error occurred. Please try again.");
-      }     
+      }
     }
   };
 
