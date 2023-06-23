@@ -30,7 +30,8 @@ export default function ShortenUrl() {
         };
       
         try {
-          const response = await api.post(`${BASE_URL}/short-urls`, urlLink, config);
+          const response = await api.post(`${BASE_URL}/short-urls`, urlLink, config, {
+            withCredentials: true});
           const responseData = response.data;
           setResponseData(responseData);
           console.log(responseData);
