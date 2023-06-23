@@ -6,46 +6,53 @@ import "../css/shorten.css";
 import api from "./refresh_t";
 
 export default function ShortenUrl() {
-    const [responseData, setResponseData] = useState({});
-    const [urlLink, setUrlLink] = useState({ url: "" });
-    const [message, setMessage] = useState("");
-    const [flashMessage, setFlashMessage] = useState("");
-  
-    const handleChange = (event) => {
-      const { name, value } = event.target;
-      setUrlLink((prevUrlLink) => ({
-        ...prevUrlLink,
-        [name]: value,
-      }));
+  const [responseData, setResponseData] = useState({});
+  const [urlLink, setUrlLink] = useState({ url: "" });
+  const [message, setMessage] = useState("");
+  const [flashMessage, setFlashMessage] = useState("");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUrlLink((prevUrlLink) => ({
+      ...prevUrlLink,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const accessToken = localStorage.getItem("accessToken");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     };
-  
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-      
-        const accessToken = localStorage.getItem("accessToken");
-        const config = {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        };
-      
-        try {
-          const response = await api.post(`${BASE_URL}/short-urls`, urlLink, config, {
-            withCredentials: true});
-          const responseData = response.data;
-          setResponseData(responseData);
-          console.log(responseData);
-        } catch (error) {
-        console.error(error);
-        setFlashMessage("Invalid link/Link already shortened");
+
+    try {
+      const response = await api.post(`${BASE_URL}/short-urls`, urlLink, config, {
+        withCredentials: true
+      });
+      const responseData = response.data;
+      setResponseData(responseData);
+      console.log(responseData);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+        setFlashMessage(error.response.data.error);
+      } else if (error.response && error.response.data && error.response.data.message) {
+        setFlashMessage(error.response.data.message);
+      } else {
+        console.error("An error occurred:", error);
+        setFlashMessage("An error occurred. Please try again.");
       }
-  
-      if (message) {
-        setFlashMessage(message);
-      }
-  
-      setUrlLink({ url: "" });
-    };
+    }
+
+    if (message) {
+      setFlashMessage(message);
+    }
+
+    setUrlLink({ url: "" });
+  };
 
   return (
     <div className="shot">
@@ -66,14 +73,14 @@ export default function ShortenUrl() {
         <>
           <div className="details">
             <p>Short URL: <br /> <span>
-                <a href={responseData.short_url} target="_blank" rel="noreferrer">{responseData.short_url}
-                </a></span></p>
+              <a href={responseData.short_url} target="_blank" rel="noreferrer">{responseData.short_url}
+              </a></span></p>
 
             <p>Original URL: <br />
-                <span>
-                    <a href={responseData.url} target="_blank" rel="noreferrer">{responseData.url}</a>
-                </span>
-                </p>
+              <span>
+                <a href={responseData.url} target="_blank" rel="noreferrer">{responseData.url}</a>
+              </span>
+            </p>
           </div>
         </>
       )}
