@@ -7,8 +7,9 @@ div.div1 form{
     padding: 3rem;
     border-radius: 1rem;
     box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
-    width: 27rem;
-    /* min-width: 20rem; */
+    width: 26rem;
+    /* min-width: 300px; */
+    position: relative;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -121,4 +122,12 @@ div.div1 form span.psw{
     /* text-shadow: 0 0.5rem 1rem rgba(209, 184, 184, 0.2); */
     letter-spacing: 0.1rem;
     text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+
+    div.div1 form{
+        width: 100%;
+    }
+
 }
