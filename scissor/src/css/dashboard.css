@@ -110,7 +110,8 @@
   margin: auto;
   padding: 20px;
   /* width: fit-content; */
-  width: 100%;
+  max-width: 100%;
+  min-width: 90%;
   position: relative;
   }
 
