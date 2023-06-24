@@ -9,7 +9,6 @@ div.div1 form{
     box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
     width: 26rem;
     /* min-width: 300px; */
-    position: relative;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -127,7 +126,7 @@ div.div1 form span.psw{
 @media (max-width: 768px) {
 
     div.div1 form{
-        width: 100%;
+        width: 90%;
     }
 
 }
