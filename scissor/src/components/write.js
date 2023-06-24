@@ -6,7 +6,7 @@ function Write({isLoggedIn}) {
   return (
     <div className='div1'>
         <h1 className='head'>We shorten links and generate QR code</h1>
-        <p className='para'>Scissor is a free URL shortener that provides QR code for your long URL.</p>
+        <p className='para'>Cut Live is a free URL shortener that provides QR code for your long URL.</p>
         <Link className='start' to={isLoggedIn ? "/dashboard" : "/login"}>Get Started</Link>
     </div>
   );
