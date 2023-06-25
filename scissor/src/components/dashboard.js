@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import QRCode from 'qrcode.react';
 import api from "./refresh_t";
-import {FaClipboard} from "react-icons/fa"
+import {FaClone} from "react-icons/fa"
 
 
 function Dashboard() {
@@ -92,7 +92,7 @@ function Dashboard() {
                         className="clipb"
                         onClick={() => handleCopyUrl(item.short_url)}
                       >
-                        <FaClipboard />
+                        <FaClone />
                       </span>
                     </div>
                   </p>
