@@ -102,7 +102,7 @@ function Dashboard() {
                       alt="QR Code"
                     />
                   </p>
-                  <p>Clicks: {item.visit}</p>
+                  <p className="clicks">Clicks: {item.visit}</p>
                 </div>
               </li>
             ))}

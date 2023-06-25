@@ -203,6 +203,10 @@ span.clipb{
   cursor: pointer;
 }
 
+p.clicks{
+  font-weight: 700;
+}
+
 
 @media (max-width: 768px) {
 
