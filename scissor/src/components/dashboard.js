@@ -108,7 +108,7 @@ function Dashboard() {
       </div>
 
       <div className="url-list">
-        <h2>URL List</h2>
+        <h2>Shortened URLs</h2>
         <ul className="ul-list">
           {userLinks
             .slice()
