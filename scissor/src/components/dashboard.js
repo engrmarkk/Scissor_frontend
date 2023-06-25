@@ -38,6 +38,27 @@ function Dashboard() {
     alert("URL Copied!");
   };
 
+  const handleDeleteRecord = (shortUrl) => {
+    const token = localStorage.getItem("accessToken");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    axios
+      .post(`${BASE_URL}/delete-url/${encodeURIComponent(shortUrl)}`, config)
+      .then((response) => {
+        // Delete the record from the userLinks state
+        const updatedUserLinks = userLinks.filter(
+          (link) => link.short_url !== shortUrl
+        );
+        setUserLinks(updatedUserLinks);
+        alert("Record deleted successfully!");
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -107,8 +128,11 @@ function Dashboard() {
                 </div>
 
                 <div className="trash-div">
-                  <span className="trash">
-                  <FaTrashAlt />
+                  <span
+                    className="trash"
+                    onClick={() => handleDeleteRecord(item.short_url)}
+                  >
+                    <FaTrashAlt />
                   </span>
                 </div>
               </li>
