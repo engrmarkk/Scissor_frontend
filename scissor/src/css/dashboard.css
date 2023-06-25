@@ -228,4 +228,8 @@ div.trash-div{
     flex-direction: column;
     width: 100%;
   }
+
+  .li-list{
+    width: 100% !important;
+  }
 }
