@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import QRCode from 'qrcode.react';
 import api from "./refresh_t";
+import {FaClipboard} from "react-icons/fa"
+
 
 function Dashboard() {
   const [users, setUsers] = useState([]);
@@ -83,9 +85,9 @@ function Dashboard() {
                   >{item.url}</a>
                 </p>
                 <p>
-                  Short URL: <a href={item.short_url}
+                  Short URL: <div className="myshort"><a href={item.short_url}
                   target="_blank"
-                  >{item.short_url}</a>
+                  >{item.short_url}</a> &nbsp; &nbsp; <span><FaClipboard /></span></div>
                 </p>
                 <p>
                   <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${item.short_url}`} alt="QR Code" />

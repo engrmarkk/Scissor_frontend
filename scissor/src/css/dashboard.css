@@ -192,6 +192,12 @@
     cursor: pointer;
 }
 
+div.myshort{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
 
 @media (max-width: 768px) {
 
