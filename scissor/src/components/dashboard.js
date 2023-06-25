@@ -46,17 +46,33 @@ function Dashboard() {
       },
     };
 
+    const lastFiveChars = shortUrl.slice(-5);
+
     axios
-      .post(`${BASE_URL}/delete-url/${encodeURIComponent(shortUrl)}`, config)
-      .then((response) => {
-        // Delete the record from the userLinks state
-        const updatedUserLinks = userLinks.filter(
-          (link) => link.short_url !== shortUrl
-        );
-        setUserLinks(updatedUserLinks);
+  .post(`${BASE_URL}/delete-url/${lastFiveChars}`, {}, {
+    ...config,
+    withCredentials: true,
+  })
+  .then((response) => {
+    if (response.status === 200) {
+      // Delete the record from the userLinks state
+      const updatedUserLinks = userLinks.filter(
+        (link) => link.short_url !== shortUrl
+      );
+      setUserLinks(updatedUserLinks);
+      setTimeout(() => {
         alert("Record deleted successfully!");
-      })
-      .catch((error) => console.error(error));
+      }, 1000);
+    } else {
+      throw new Error("Failed to delete record");
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    alert("Error occurred while deleting the record");
+  });
+
+
   };
 
   return (
