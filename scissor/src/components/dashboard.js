@@ -8,6 +8,9 @@ import QRCode from 'qrcode.react';
 import api from "./refresh_t";
 import {FaClone} from "react-icons/fa"
 import {FaTrashAlt} from "react-icons/fa"
+import {FaUserAlt} from "react-icons/fa"
+import {FaUserTie} from "react-icons/fa"
+import {GrMail} from "react-icons/gr"
 
 
 function Dashboard() {
@@ -82,20 +85,20 @@ function Dashboard() {
       <div className="user-profile">
         <h2>User Profile</h2>
         <p className="title-head">
-          Username: <span>{users.username}</span>
+        <FaUserAlt /> <span>{users.username}</span>
         </p>
         <p className="title-head">
-          Email:{" "}
+          <GrMail />{" "}
           <span>
             <a href={`mailto:${users.email}`}>{users.email}</a>
           </span>
         </p>
         <p className="title-head">
-          First Name: <span>{users.first_name}</span>
+          <FaUserTie /> <span>{users.first_name} {users.last_name}</span>
         </p>
-        <p className="title-head">
+        {/* <p className="title-head">
           Last Name: <span>{users.last_name}</span>
-        </p>
+        </p> */}
       </div>
 
       <div className="shorten-url">
