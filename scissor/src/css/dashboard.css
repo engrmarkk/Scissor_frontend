@@ -59,8 +59,11 @@
   .title-head{
     font-size: 1.2rem;
     font-weight: 600;
-    /* display: flex;
-    justify-content: space-between; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #007bff;
+    /* justify-content: space-between; */
   }
 
   .user-profile h2{
@@ -71,12 +74,15 @@
   .title-head span{
     font-size: 1rem;
     font-weight: 400;
-    background: #007bff;
-    color: white;
+    color: black;
+    /* background: #007bff;
+    color: white; */
     padding: .5rem;
     display: flex;
     justify-content: flex-start;
     max-width: 500px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
     /* align-items: center; */
     border-radius: 12px 0 12px 0;
     /* box-shadow: 0 16px 62px 0 rgba(161, 160, 160, 0.37); */
@@ -84,8 +90,10 @@
   }
 
   .title-head span a{
-    color: white;
+    /* color: white; */
     text-decoration: none;
+    color: black;
+    text-transform: lowercase;
   }
 
   .ul-list{
