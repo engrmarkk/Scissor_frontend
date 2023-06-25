@@ -198,6 +198,10 @@ div.myshort{
   flex-direction: row;
 }
 
+span.clipb{
+  color: #756c6c;
+}
+
 
 @media (max-width: 768px) {
 

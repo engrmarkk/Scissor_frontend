@@ -11,38 +11,31 @@ import {FaClipboard} from "react-icons/fa"
 
 function Dashboard() {
   const [users, setUsers] = useState([]);
-  const [user_links, setUserLinks] = useState([]);
-  // const [dashboard, setDashboard] = useState([]);
-  // ...
+  const [userLinks, setUserLinks] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("accessToken"); // Get the token from local storage
+    const token = localStorage.getItem("accessToken");
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the authorization header with the "Bearer" prefix
+        Authorization: `Bearer ${token}`,
       },
     };
 
-    api.get(`${BASE_URL}/dashboard`, config) // Fetch data from the first link
+    api
+      .get(`${BASE_URL}/dashboard`, config)
       .then((response) => {
-        // Process the data
         const users = response.data;
-        const user_links = response.data.user_links;
-        setUserLinks(user_links);
+        const userLinks = response.data.user_links;
+        setUserLinks(userLinks);
         setUsers(users);
-        // ...
-
-        // Fetch data from another link within the same file
-        // return axios.get(`${BASE_URL}/all-link`, config);
       })
-      // .then((response) => {
-      //   // Process the data from the other link
-      //   const otherData = response.data;
-      //   setDashboard(otherData);
-      // ...
-      // })
       .catch((error) => console.error(error));
   }, []);
+
+  const handleCopyUrl = (url) => {
+    navigator.clipboard.writeText(url);
+    alert("URL Copied!");
+  };
 
   return (
     <div>
@@ -76,26 +69,43 @@ function Dashboard() {
       <div className="url-list">
         <h2>URL List</h2>
         <ul className="ul-list">
-          {user_links.slice().reverse().map((item) => (
-            <li key={item.id} className="li-list">
-              <div>
-                <p>
-                  Original URL: <a href={item.url}
-                  target="_blank"
-                  >{item.url}</a>
-                </p>
-                <p>
-                  Short URL: <div className="myshort"><a href={item.short_url}
-                  target="_blank"
-                  >{item.short_url}</a> &nbsp; &nbsp; <span><FaClipboard /></span></div>
-                </p>
-                <p>
-                  <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${item.short_url}`} alt="QR Code" />
-                </p>
-                <p>Clicks: {item.visit}</p>
-              </div>
-            </li>
-          ))}
+          {userLinks
+            .slice()
+            .reverse()
+            .map((item) => (
+              <li key={item.id} className="li-list">
+                <div>
+                  <p>
+                    Original URL:{" "}
+                    <a href={item.url} target="_blank">
+                      {item.url}
+                    </a>
+                  </p>
+                  <p>
+                    Short URL:{" "}
+                    <div className="myshort">
+                      <a href={item.short_url} target="_blank">
+                        {item.short_url}
+                      </a>{" "}
+                      &nbsp; &nbsp;
+                      <span
+                        className="clipb"
+                        onClick={() => handleCopyUrl(item.short_url)}
+                      >
+                        <FaClipboard />
+                      </span>
+                    </div>
+                  </p>
+                  <p>
+                    <img
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${item.short_url}`}
+                      alt="QR Code"
+                    />
+                  </p>
+                  <p>Clicks: {item.visit}</p>
+                </div>
+              </li>
+            ))}
         </ul>
       </div>
     </div>
