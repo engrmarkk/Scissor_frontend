@@ -201,12 +201,24 @@ div.myshort{
 span.clipb{
   color: #534e4e;
   cursor: pointer;
+  font-size: .7rem;
 }
 
 p.clicks{
   font-weight: 700;
 }
 
+span.trash{
+  color: red;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+div.trash-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
 
 @media (max-width: 768px) {
 

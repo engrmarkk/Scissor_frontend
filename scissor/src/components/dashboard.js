@@ -7,6 +7,7 @@ import axios from "axios";
 import QRCode from 'qrcode.react';
 import api from "./refresh_t";
 import {FaClone} from "react-icons/fa"
+import {FaTrashAlt} from "react-icons/fa"
 
 
 function Dashboard() {
@@ -103,6 +104,12 @@ function Dashboard() {
                     />
                   </p>
                   <p className="clicks">Clicks: {item.visit}</p>
+                </div>
+
+                <div className="trash-div">
+                  <span className="trash">
+                  <FaTrashAlt />
+                  </span>
                 </div>
               </li>
             ))}
